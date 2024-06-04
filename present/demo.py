@@ -19,15 +19,14 @@ def generate_random_key(length):
 
 def show(img):
     # cv2.imshow('image', img)
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     # Generate a random key
-    random_key = generate_random_key(6)  # You can adjust the length of the random key as needed
-    print("generated key=", random_key)
+ 
 
 # Save the image with a unique filename
     save_dir = '../results'
     os.makedirs(save_dir, exist_ok=True)  # Create the directory if it doesn't exist
-    save_filename = f'result_image_{random_key}.jpg'
+    save_filename = f'gen_{args.filename}'
     save_path=os.path.join(save_dir,save_filename)
     cv2.imwrite(save_path,img )
     cv2.destroyAllWindows()
@@ -78,13 +77,13 @@ def predict(args):
         allim = np.hstack((x_rgb, out_rgb, att_heatmap))
         show(allim)
 
-        plt.figure()
-        plt.subplot(1,3,1), plt.title('cloudy image'), plt.imshow(x_rgb), plt.axis('off')
-        plt.subplot(1,3,2), plt.title('cloudless image'), plt.imshow(out_rgb), plt.axis('off')
-        plt.subplot(1,3,3), plt.title('attention map'), plt.imshow(att_heatmap), plt.axis('off')
+        # plt.figure()
+        # plt.subplot(1,3,1), plt.title('cloudy image'), plt.imshow(x_rgb), plt.axis('off')
+        # plt.subplot(1,3,2), plt.title('cloudless image'), plt.imshow(out_rgb), plt.axis('off')
+        # plt.subplot(1,3,3), plt.title('attention map'), plt.imshow(att_heatmap), plt.axis('off')
 
-        plt.show()
-        fig.savefig('graph.png')
+        # plt.show()
+        # fig.savefig('graph.png')
         
 
 if __name__ == '__main__':
@@ -94,6 +93,8 @@ if __name__ == '__main__':
     parser.add_argument('--cuda', action='store_true')
     parser.add_argument('--gpu_ids', type=int, default=[0])
     parser.add_argument('--manualSeed', type=int, default=0)
+    parser.add_argument('--filename', type=str,required=True)
     args = parser.parse_args()
+    
 
     predict(args)

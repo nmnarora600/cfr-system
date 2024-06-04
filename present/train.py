@@ -179,7 +179,7 @@ if __name__ == '__main__':
     os.makedirs(config.out_dir)
     print('Job number: {:04d}'.format(n_job))
 
-    # 保存本次训练时的配置
+    #
     shutil.copyfile('config.yml', os.path.join(config.out_dir, 'config.yml'))
 
     train(config)
