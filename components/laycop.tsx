@@ -11,10 +11,6 @@ export default function LayoutComponent({
   }>) {
     const pathname=usePathname();
 
-    let wid="w-3/4";
-    if(pathname=="/sign-up" || pathname=="/sign-in")
-        wid="w-[100vw] md:left-0"
-
 
   return (
     <div className="flex justify-between w-[100vw]">
@@ -22,7 +18,7 @@ export default function LayoutComponent({
           
       <SideNav/>
         
-        <div className={`md:${wid} w-[95vw] right-0 absolute mt-8 mr-3 md:mt-0 md:mr-0`}>
+        <div className={`${(pathname=="/" || pathname=="/cloudremoval" || pathname=="/history")?"md:w-3/4":"md:w-[100vw] md:left-0"} w-[95vw] right-0 absolute mt-8 mr-3 md:mt-0 md:mr-0`}>
 <Header/>{children}</div></div>
   )
 }

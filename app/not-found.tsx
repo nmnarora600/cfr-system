@@ -6,7 +6,9 @@ import React from 'react'
 
 export default function NotFound() {
   return (
-    <div className='w-full h-[70vh] relative z-50  flex flex-col items-center justify-center p-5 lg:p-10'>
+
+  
+    <div className={`w-full h-[100vh] relative z-50   flex flex-col items-center justify-center p-5 lg:p-10`}>
         
             <div className=' flex items-center justify-center'>
                 <Image width={300} height={300} src={'/notfound.jpg'}  alt='page'/>
@@ -22,5 +24,6 @@ export default function NotFound() {
         
 
     </div>
+   
   )
 }
